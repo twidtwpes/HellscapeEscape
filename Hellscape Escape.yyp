@@ -1,7 +1,9 @@
 {
   "resources": [
+    {"id":{"name":"objEpicPigGlow","path":"objects/objEpicPigGlow/objEpicPigGlow.yy",},"order":0,},
     {"id":{"name":"sptEpicPigGlow","path":"sprites/sptEpicPigGlow/sptEpicPigGlow.yy",},"order":0,},
     {"id":{"name":"sptEpicPigLogo","path":"sprites/sptEpicPigLogo/sptEpicPigLogo.yy",},"order":1,},
+    {"id":{"name":"Font1","path":"fonts/Font1/Font1.yy",},"order":0,},
     {"id":{"name":"rmEpicPig","path":"rooms/rmEpicPig/rmEpicPig.yy",},"order":0,},
   ],
   "Options": [
