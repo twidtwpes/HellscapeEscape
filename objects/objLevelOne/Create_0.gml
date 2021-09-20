@@ -89,12 +89,13 @@ for(var _y = 1; _y < height_-1; _y++){
 var list_value = get_empty_floor(self);
 instance_create_layer(list_value[0], list_value[1], "Todd", objTodd);
 
-enemy_types = [objHornet];
-enemy_counts = [irandom_range(1,5)];
+enemy_types = [objHornet, objDemon];
+enemy_counts = [irandom_range(10,30),irandom_range(10,30)];
+enemy_layers = ["EnemiesFlying", "EnemiesGrounded"];
 for(var i = 0; i < array_length(enemy_types); i++){
 	for(var j = 1; j <= enemy_counts[i]; j++){
 		var list_value = get_empty_floor(self);
-		instance_create_layer(list_value[0], list_value[1], "Enemies", enemy_types[i]);
+		instance_create_layer(list_value[0], list_value[1], enemy_layers[i], enemy_types[i]);
 	}
 }
 

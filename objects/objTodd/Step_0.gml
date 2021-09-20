@@ -1,11 +1,6 @@
-#region Hit Back
-x += hsp;
-y += vsp;
-hsp = 0;
-vsp = 0;
-#endregion Hit Back
 	
 #region Check Death
+recovery_remain--;
 if(hp <= 0){
 	room_goto(rmEndLevel);
 }
@@ -85,7 +80,17 @@ if(_x_input == 0 && _y_input ==0){
 }
 #endregion Calculate Movement
 
-#region Check Collisions
+#region Check Collisions/Move
+if(hit_now){
+	hit_amt--;
+	if(hit_amt <= 0) hit_now = false;
+	if(x_speed_ == 0 && y_speed_ == 0){
+		
+		x_speed_ = lengthdir_x(hit_spd, hit_dir);
+		y_speed_ = lengthdir_y(hit_spd, hit_dir);
+	}
+}
+
 x += x_speed_;
 if(x_speed_ > 0){
 	image_xscale = 1;
@@ -117,7 +122,7 @@ if(y_speed_ > 0){
 		y_speed_ = 0;
 	}
 }
-#endregion Check Collisions
+#endregion Check Collisions/Move
 
 #region Set Gun
 switch(currentGun){

@@ -1,1 +1,3 @@
-if(layer_exists("Enemies")) enemy_count = instance_number(objHornet);
+enemy_count = 0;
+if(layer_exists("EnemiesFlying")) enemy_count += instance_number(objEnemyFlying);
+//if(layer_exists("EnemiesGrounded")) enemy_count += instance_number(objDemon);

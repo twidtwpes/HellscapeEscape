@@ -10,12 +10,8 @@ if(!dead){
 		instance_destroy();
 	}
 	if(hp <= 0){
-		//layer = layer_get_id("Dead");
 		dead = true;
-		instance_create_layer(x, y, "Dead", objHornetDead);
-		//sprite_index = sptHornet_Dead;
-		//image_index = 0;
-		//image_speed = 0;
+		instance_create_layer(x, y, "Dead", object_dead);
 		screen_shake(5,8,0.4,0.4,8);
 		instance_destroy();
 	}

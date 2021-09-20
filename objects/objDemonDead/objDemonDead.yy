@@ -1,16 +1,13 @@
 {
   "spriteId": {
-    "name": "sptHornet",
-    "path": "sprites/sptHornet/sptHornet.yy",
+    "name": "sptDemon_Dead",
+    "path": "sprites/sptDemon_Dead/sptDemon_Dead.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "objEnemyFlying",
-    "path": "objects/objEnemyFlying/objEnemyFlying.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -31,7 +28,7 @@
     "path": "folders/Objects/Enemies.yy",
   },
   "resourceVersion": "1.0",
-  "name": "objHornet",
+  "name": "objDemonDead",
   "tags": [],
   "resourceType": "GMObject",
 }

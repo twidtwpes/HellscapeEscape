@@ -1,7 +1,5 @@
-xx = x;
-yy = y;
-offset = 2;
-start_time = get_timer();
+// Inherit the parent event
+event_inherited();
 
 if(objTrackEnemies.enemy_count == 0){
 	objLevelEndGameOver.image_xscale = 0;

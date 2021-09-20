@@ -1,6 +1,10 @@
 // Movement vars
-hsp = 0;
-vsp = 0;
+//hsp = 0;
+//vsp = 0;
+hit_dir = 0;
+hit_spd = 0;
+hit_amt = 0;
+hit_now = false;
 x_speed_ = 0;
 y_speed_ = 0;
 max_speed_ = 2;

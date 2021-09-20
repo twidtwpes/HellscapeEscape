@@ -14,6 +14,7 @@ if(!dead){
 		amt_array[2] = move_ammount;
 		xsc_array[2] = choose(1, -1);
 		new_move = true;
+		sprite_index = sprite_move;
 	}else if(move_opt == 1){
 		//direction = 0;
 		//speed = 0;
@@ -24,17 +25,14 @@ if(!dead){
 		xsc_array[0] = image_xscale;
 		new_move = true;
 	}else if(move_opt ==2){
-		//current_move = 20;
-		//move_towards_point(objTodd.x, objTodd.y, 2);
 		var p_dir = point_direction(x, y, objTodd.x, objTodd.y);
-		//if(p_dir > 90 && p_dir < 270) image_xscale = -1; else image_xscale = 1;
 		move_rnd = 0;
 		spd_array[3] = 2;
 		dir_array[3] = p_dir;
 		amt_array[3] = 20;
 		if(p_dir > 90 && p_dir < 270) xsc_array[3] = -1; else xsc_array[3] = 1;
 		new_move = true;
-		sprite_index = sptHornet_Attack;
+		sprite_index = sprite_attack;
 	}
 	alarm[0] = irandom_range(move_timer - move_timer_rnd, move_timer + move_timer_rnd);
 }
