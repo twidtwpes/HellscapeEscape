@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 999,
+  "bbox_right": 319,
   "bbox_top": 0,
-  "bbox_bottom": 418,
+  "bbox_bottom": 133,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 1000,
-  "height": 419,
+  "width": 320,
+  "height": 134,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,9 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"d260a18c-6894-4367-9fb9-42996aa447f7","path":"sprites/sptEpicPigGlow/sptEpicPigGlow.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"d260a18c-6894-4367-9fb9-42996aa447f7","path":"sprites/sptEpicPigGlow/sptEpicPigGlow.yy",},"LayerId":{"name":"fecddc60-9540-4fe4-b0a1-ab5a1f7352f8","path":"sprites/sptEpicPigGlow/sptEpicPigGlow.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sptEpicPigGlow","path":"sprites/sptEpicPigGlow/sptEpicPigGlow.yy",},"resourceVersion":"1.0","name":"d260a18c-6894-4367-9fb9-42996aa447f7","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"f556356d-f482-48c2-81f4-5d143520b06b","path":"sprites/sptEpicPigGlow/sptEpicPigGlow.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"f556356d-f482-48c2-81f4-5d143520b06b","path":"sprites/sptEpicPigGlow/sptEpicPigGlow.yy",},"LayerId":{"name":"5815c598-07b6-45d7-ad10-6a707b7a59a4","path":"sprites/sptEpicPigGlow/sptEpicPigGlow.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sptEpicPigGlow","path":"sprites/sptEpicPigGlow/sptEpicPigGlow.yy",},"resourceVersion":"1.0","name":"f556356d-f482-48c2-81f4-5d143520b06b","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"sptEpicPigGlow","path":"sprites/sptEpicPigGlow/sptEpicPigGlow.yy",},
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"c50fec57-a444-4f5a-b3d4-3a930e6c3111","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"d260a18c-6894-4367-9fb9-42996aa447f7","path":"sprites/sptEpicPigGlow/sptEpicPigGlow.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"f487afa4-d26a-4312-8c1c-b56044040a14","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"f556356d-f482-48c2-81f4-5d143520b06b","path":"sprites/sptEpicPigGlow/sptEpicPigGlow.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -65,12 +65,12 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"fecddc60-9540-4fe4-b0a1-ab5a1f7352f8","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"5815c598-07b6-45d7-ad10-6a707b7a59a4","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Sprites",
-    "path": "folders/Sprites.yy",
+    "name": "Logos",
+    "path": "folders/Sprites/Logos.yy",
   },
   "resourceVersion": "1.0",
   "name": "sptEpicPigGlow",
