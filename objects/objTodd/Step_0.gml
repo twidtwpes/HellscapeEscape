@@ -7,7 +7,7 @@ vsp = 0;
 	
 #region Check Death
 if(hp <= 0){
-	game_end();
+	room_goto(rmEndLevel);
 }
 #endregion Check Death
 
