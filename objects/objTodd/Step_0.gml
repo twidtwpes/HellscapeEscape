@@ -1,3 +1,15 @@
+#region Hit Back
+x += hsp;
+y += vsp;
+hsp = 0;
+vsp = 0;
+#endregion Hit Back
+	
+#region Check Death
+if(hp <= 0){
+	game_end();
+}
+#endregion Check Death
 
 #region Get Player Input
 if(hascontrol){
@@ -166,12 +178,14 @@ if(controller == 0){
 }
 #endregion Update Gun
 
+#region Move Target
 with(objTarget){
 	x = other.gx;
 	y = other.gy;
 	x = x + lengthdir_x(80,other.gunangle);
 	y = y + lengthdir_y(80,other.gunangle);
 }
+#endregion Move Target
 
 #region Fire Gun
 // Update firing vars

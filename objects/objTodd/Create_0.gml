@@ -1,9 +1,12 @@
 // Movement vars
+hsp = 0;
+vsp = 0;
 x_speed_ = 0;
 y_speed_ = 0;
 max_speed_ = 2;
 acceleration_ = .5;
-
+recovery_remain = 0;
+flash = 0;
 // Controller vars
 controller = 0;
 hascontrol = true;

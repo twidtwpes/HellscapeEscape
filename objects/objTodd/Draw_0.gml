@@ -1,6 +1,14 @@
+
 draw_sprite_ext(sptToddShadow, 0, x, y+9, 1, -.75, 0, c_white, .4);
+
 draw_self();
 
+// Set all white
+if(flash > 0){
+	flash--;
+	shader_set(shdWhite);
+	draw_self();
+}
 
 gunplaceangle = gunangle;
 if(gunangle > 90 && gunangle < 270){
@@ -27,3 +35,5 @@ if(gunplaceangle > 0 && gunplaceangle <= 180){
 	}
 	draw_sprite_ext(gunSpt, 0, gx, gy, xscale, 1, gunangle, c_white, 1);
 }
+
+shader_reset();

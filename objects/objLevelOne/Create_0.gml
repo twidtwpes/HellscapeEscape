@@ -90,7 +90,7 @@ var list_value = get_empty_floor(self);
 instance_create_layer(list_value[0], list_value[1], "Todd", objTodd);
 
 enemy_types = [objHornet];
-enemy_counts = [irandom_range(5,10)];
+enemy_counts = [irandom_range(10,30)];
 for(var i = 0; i < array_length(enemy_types); i++){
 	for(var j = 1; j <= enemy_counts[i]; j++){
 		var list_value = get_empty_floor(self);
