@@ -1,6 +1,4 @@
 // Movement vars
-//hsp = 0;
-//vsp = 0;
 hit_dir = 0;
 hit_spd = 0;
 hit_amt = 0;
@@ -107,5 +105,4 @@ boffset = guns[currentGun,BOFFSET];
 bangleoffset = guns[currentGun,BANGLEOFFSET];
 spread = guns[currentGun,SPREAD];
 bSpeed = guns[currentGun,BSPEED];
-gx = 0;
-gy = 0;
+

@@ -185,8 +185,8 @@ if(controller == 0){
 
 #region Move Target
 with(objTarget){
-	x = other.gx;
-	y = other.gy;
+	x = other.x;
+	y = other.y;
 	x = x + lengthdir_x(80,other.gunangle);
 	y = y + lengthdir_y(80,other.gunangle);
 }
@@ -205,7 +205,7 @@ if((mouse_check_button(mb_left) || gamepad_button_check(0,gp_shoulderrb)) && fir
 	firingdelay = firingdelayStart;
 	screen_shake(2,7,0.2,0.2,10);
 	//audio_play_sound(snShoot,5,false);
-	with(instance_create_layer(gx,gy,"Bullets",objBullet)){
+	with(instance_create_layer(x,y,"Bullets",objBullet)){
 		if(other.gunplaceangle > 90 && other.gunplaceangle <= 270){
 			var byoffset = 10;
 		}else{
