@@ -19,11 +19,11 @@ if(gunangle > 90 && gunangle < 270){
 }
 
 if(gunplaceangle > 0 && gunplaceangle <= 180){
-	draw_sprite_ext(gunSpt, 0, x, y, xscale, 1, gunangle, c_white, 1);
+	draw_sprite_ext(gunsprite, 0, x, y, xscale, 1, gunangle, c_white, 1);
 	draw_sprite_ext(sptToddHead, 0, x+image_xscale, y+1, xscale, 1, 0, c_white, 1);
 }else{
 	draw_sprite_ext(sptToddHead, 0, x+image_xscale, y+1, xscale, 1, 0, c_white, 1);
-	draw_sprite_ext(gunSpt, 0, x, y, xscale, 1, gunangle, c_white, 1);
+	draw_sprite_ext(gunsprite, 0, x, y, xscale, 1, gunangle, c_white, 1);
 }
 
 shader_reset();

@@ -4,7 +4,7 @@
 #macro CELL_WIDTH 32
 #macro CELL_HEIGHT 32
 #macro FLOOR -5
-#macro WALL -6
+//#macro ANY -6
 #macro VOID -7
 
 #macro NORTH 1
@@ -12,26 +12,17 @@
 #macro EAST 4
 #macro SOUTH 8
 
-//Gun Macros
-#macro REVOLVER 0
-#macro MACHINEGUN 1
-#macro SUBMACHINEGUN 2
-#macro ASSAULTRIFFLE 3
-#macro KNIFE 4
-#macro SWORD 5
-#macro KATANA 6
-#macro CLUB 7
-#macro MALLET 8
+//global.upperleft = [FLOOR, FLOOR, ANY, FLOOR, VOID, VOID, ANY, VOID, ANY];
+//global.uppermid = [ANY, FLOOR, ANY, VOID, VOID, VOID, ANY, VOID, ANY];
+//global.upperright = [ANY, FLOOR, FLOOR, VOID, VOID, FLOOR, ANY, VOID, ANY];
+//global.middleleft = [ANY, VOID, ANY, FLOOR, VOID, VOID, ANY, VOID, ANY];
+//global.middlemid = [VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID, VOID];
+//global.middleright = [ANY, VOID, ANY, VOID, VOID, FLOOR, ANY, VOID, ANY];
+//global.bottomleft = [ANY, VOID, ANY, VOID, VOID, FLOOR, ANY, VOID, ANY];
 
-#macro RECOILSTART 0
-#macro FIRINGDELAYSTART 1
-#macro YOFFSET 2
-#macro XOFFSET 3
-#macro BOFFSET 4
-#macro BANGLEOFFSET 5
-#macro SPREAD 6
-#macro BSPEED 7
+//function grid_tile_check(tile_grid, tile_x, tile_y, tile_array){
 
+//}
 
 function wait(stime,secs){
 	var microsecs = secs * 1000000;
@@ -79,9 +70,44 @@ function get_empty_floor(obj){
 		list_value = ds_list_find_value(obj.floor_list, list_index);
 	}
 	ds_list_add(obj.floor_used_list, list_value);
-	var start_x = list_value[0] * CELL_WIDTH + CELL_WIDTH/2;
-	var start_y = list_value[1] * CELL_HEIGHT + CELL_HEIGHT/2;
-	return [start_x, start_y];
+	//var start_x = list_value[0] * CELL_WIDTH + CELL_WIDTH/2;
+	//var start_y = list_value[1] * CELL_HEIGHT + CELL_HEIGHT/2;
+	//return [start_x, start_y];
+	
+	return [list_value[0], list_value[1]];
+}
+
+function knock_out_walls(grid, _x, _y){
+	var edge_id = layer_tilemap_get_id("WallTilesEdge");
+	var front_id = layer_tilemap_get_id("WallTilesFront");
+	var back_id = layer_tilemap_get_id("WallTilesBack");
+	var clear_id = layer_get_id("FloorClear");
+	
+	clear_wall(grid, _x-1, _y-1, front_id, back_id, edge_id, clear_id);
+	clear_wall(grid, _x, _y-1, front_id, back_id, edge_id, clear_id);
+	clear_wall(grid, _x+1, _y-1, front_id, back_id, edge_id, clear_id);
+	clear_wall(grid, _x-1, _y, front_id, back_id, edge_id, clear_id);
+	clear_wall(grid, _x+1, _y, front_id, back_id, edge_id, clear_id);
+	clear_wall(grid, _x-1, _y+1, front_id, back_id, edge_id, clear_id);
+	clear_wall(grid, _x, _y+1, front_id, back_id, edge_id, clear_id);
+	clear_wall(grid, _x+1, _y+1, front_id, back_id, edge_id, clear_id);
+}
+
+function clear_wall(grid, _x, _y, front_id, back_id, edge_id, clear_id){
+	if(grid[# _x,_y] == VOID){
+		grid[# _x,_y] = FLOOR;
+		tilemap_set(back_id,0,_x,_y);
+		tilemap_set(front_id,0,_x,_y);
+		tilemap_set(edge_id,0,_x-1,_y);
+		tilemap_set(edge_id,0,_x+1,_y);
+		var clear_x = _x * CELL_WIDTH;
+		var clear_y = _y * CELL_HEIGHT;
+		with(instance_create_layer(clear_x-1, clear_y-1, clear_id, objFloorClearOne)){
+			//var rot = choose(0,90,180,270);
+			//image_angle = rot;
+			//image_index = 0;
+		}
+	} 
 }
 
 function get_weighted_value(options){

@@ -1,4 +1,4 @@
-	
+
 #region Check Death
 recovery_remain--;
 if(hp <= 0){
@@ -80,6 +80,63 @@ if(_x_input == 0 && _y_input ==0){
 }
 #endregion Calculate Movement
 
+#region Set Gun
+currentGun = REVOLVER;
+gunsprite =  guns[currentGun, GUNSPRITE];
+reloadtime =  guns[currentGun, RELOADTIME];
+recoilstart =  guns[currentGun, RECOILSTART];
+shotamount =  guns[currentGun, SHOTAMOUNT];
+shotspread =  guns[currentGun, SHOTSPREAD];
+shotspeed =  guns[currentGun, SHOTSPEED];
+shottimetodie =  guns[currentGun, SHOTTIMETODIE];
+attackpoints = guns[REVOLVER, ATTACKPOINTS];
+#endregion Set Gun
+
+#region Update Gun
+if(controller == 0){
+	gunangle = point_direction(x,y,mouse_x,mouse_y);
+}else{
+	var controllerh = gamepad_axis_value(0,gp_axisrh);
+	var controllerv = gamepad_axis_value(0,gp_axisrv);
+	gunangle = point_direction(0,0,controllerh,controllerv);
+}
+#endregion Update Gun
+
+#region Move Target
+with(objTarget){
+	x = other.x;
+	y = other.y;
+	x = x + lengthdir_x(80,other.gunangle);
+	y = y + lengthdir_y(80,other.gunangle);
+}
+#endregion Move Target
+
+#region Fire Gun
+currentreload++;
+currentrecoil = 0;
+if(!mouse_check_button(mb_left) && !gamepad_button_check(0,gp_shoulderrb)){
+	firing = false;
+	currentshot = -1;
+}
+if((mouse_check_button(mb_left) || gamepad_button_check(0,gp_shoulderrb)) && currentreload > reloadtime){
+	firing = true;
+	if(currentshot == -1) currentshot = 0;
+	if(currentshot > -1) currentshot++;
+	if(currentshot <= shotamount){
+		screen_shake(2,7,0.2,0.2,10);
+		with(instance_create_layer(x, y, "Bullets", objBulletRevolver)){
+			sp = other.shotspeed;
+			direction = other.gunangle + random_range(-other.shotspread,other.shotspread);
+			image_angle = direction;
+			ap = other.attackpoints;
+		}
+		currentrecoil = recoilstart;
+	}else{
+		currentreload = 0;
+	}
+}
+#endregion Fire Gun
+
 #region Check Collisions/Move
 if(hit_now){
 	hit_amt--;
@@ -91,6 +148,7 @@ if(hit_now){
 	}
 }
 
+x_speed_ -= lengthdir_x(currentrecoil, gunangle);
 x += x_speed_;
 if(x_speed_ > 0){
 	image_xscale = 1;
@@ -108,6 +166,7 @@ if(x_speed_ > 0){
 	}
 }
 
+y_speed_ -= lengthdir_y(currentrecoil, gunangle);
 y += y_speed_;
 if(y_speed_ > 0){
 	if(grid_place_meeting(self, objLevelOne.grid_)){
@@ -123,99 +182,3 @@ if(y_speed_ > 0){
 	}
 }
 #endregion Check Collisions/Move
-
-#region Set Gun
-switch(currentGun){
-	case REVOLVER:{
-		gunSpt = sptRevolver;
-		break;
-	}
-	case MACHINEGUN:{
-		gunSpt = sptMachineGun;
-		break;
-	}
-	case SUBMACHINEGUN:{
-		gunSpt = sptSubmachineGun;
-		break;
-	}
-	case ASSAULTRIFFLE:{
-		gunSpt = sptAssaultRifle;
-		break;
-	}
-	case KNIFE:{
-		gunSpt = sptKnife;
-		break;
-	}
-	case SWORD:{
-		gunSpt = sptSword;
-		break;
-	}
-	case KATANA:{
-		gunSpt = sptKatana;
-		break;
-	}
-	case CLUB:{
-		gunSpt = sptClub;
-		break;
-	}
-	case MALLET:{
-		gunSpt = sptMallet;
-		break;
-	}
-}
-#endregion Set Gun
-
-#region Update Gun
-// Angle gun
-if(controller == 0){
-	gunangle = point_direction(x,y,mouse_x,mouse_y);
-}else{
-	var controllerh = gamepad_axis_value(0,gp_axisrh);
-	var controllerv = gamepad_axis_value(0,gp_axisrv);
-	/*
-	if(abs(controllerh > 0.05) || abs(controllerv) > 0.05){
-		controllerangle = point_direction(0,0,controllerh,controllerv);
-		image_angle = controllerangle;
-	}
-	*/
-	gunangle = point_direction(0,0,controllerh,controllerv);
-	//image_angle = gunangle;
-}
-#endregion Update Gun
-
-#region Move Target
-with(objTarget){
-	x = other.x;
-	y = other.y;
-	x = x + lengthdir_x(80,other.gunangle);
-	y = y + lengthdir_y(80,other.gunangle);
-}
-#endregion Move Target
-
-#region Fire Gun
-// Update firing vars
-if(firingdelay > 0) firingdelay--;
-recoil = max(0,recoil - 1);
-
-// Check firing
-if((mouse_check_button_released(mb_left) || gamepad_button_check_released(0,gp_shoulderrb)) && firingdelay == -5) firingdelay = 0;
-
-if((mouse_check_button(mb_left) || gamepad_button_check(0,gp_shoulderrb)) && firingdelay <= 0 && firingdelay > -5){
-	recoil = recoilStart;
-	firingdelay = firingdelayStart;
-	screen_shake(2,7,0.2,0.2,10);
-	//audio_play_sound(snShoot,5,false);
-	with(instance_create_layer(x,y,"Bullets",objBullet)){
-		if(other.gunplaceangle > 90 && other.gunplaceangle <= 270){
-			var byoffset = 10;
-		}else{
-			var byoffset = 0;
-		}
-		x = x - lengthdir_x(other.boffset,other.gunangle-other.bangleoffset);
-		y = y - byoffset - lengthdir_y(other.boffset,other.gunangle-other.bangleoffset);
-		speed = other.bSpeed;
-		direction = other.gunangle + random_range(-other.spread,other.spread);
-		image_angle = direction;
-	}
-}
-#endregion Fire Gun
