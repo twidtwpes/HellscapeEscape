@@ -28,7 +28,7 @@
   "overriddenProperties": [
     {"propertyId":{"name":"object_dead","path":"objects/objEnemyFlying/objEnemyFlying.yy",},"objectId":{"name":"objEnemyFlying","path":"objects/objEnemyFlying/objEnemyFlying.yy",},"value":"objDemonDead","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"sprite_idle","path":"objects/objEnemyFlying/objEnemyFlying.yy",},"objectId":{"name":"objEnemyFlying","path":"objects/objEnemyFlying/objEnemyFlying.yy",},"value":"sptDemon","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
-    {"propertyId":{"name":"sprite_attack","path":"objects/objEnemyFlying/objEnemyFlying.yy",},"objectId":{"name":"objEnemyFlying","path":"objects/objEnemyFlying/objEnemyFlying.yy",},"value":"sptDemon_Attack","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
+    {"propertyId":{"name":"sprite_attack","path":"objects/objEnemyFlying/objEnemyFlying.yy",},"objectId":{"name":"objEnemyFlying","path":"objects/objEnemyFlying/objEnemyFlying.yy",},"value":"sptDemon_Spin","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
     {"propertyId":{"name":"sprite_move","path":"objects/objEnemyFlying/objEnemyFlying.yy",},"objectId":{"name":"objEnemyFlying","path":"objects/objEnemyFlying/objEnemyFlying.yy",},"value":"sptDemon_Run","resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMOverriddenProperty",},
   ],
   "parent": {
