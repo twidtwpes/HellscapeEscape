@@ -7,10 +7,13 @@ move_rnd = 0;
 new_move = false;
 
 //stay still, hit, move, attack
-spd_array = [0, 0, 0, 0];
-dir_array = [0, 0, 0, 0];
-amt_array = [0, 0, 0, 0];
-xsc_array = [1, 1, 1, 1];
+spd_array = [0, 0, 0, 0, 0];
+dir_array = [0, 0, 0, 0, 0];
+amt_array = [0, 0, 0, 0, 0];
+xsc_array = [1, 1, 1, 1, 1];
+
+shot_dir = 0;
+shot_start = 0;
 
 
 

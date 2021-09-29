@@ -1,16 +1,13 @@
 {
   "spriteId": {
-    "name": "sptDemon",
-    "path": "sprites/sptDemon/sptDemon.yy",
+    "name": "sptBulletBlob",
+    "path": "sprites/sptBulletBlob/sptBulletBlob.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "objEnemyGround",
-    "path": "objects/objEnemyGround/objEnemyGround.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -23,15 +20,17 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":1,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Enemies",
-    "path": "folders/Objects/Enemies.yy",
+    "name": "Main",
+    "path": "folders/Objects/Main.yy",
   },
   "resourceVersion": "1.0",
-  "name": "objDemon",
+  "name": "objBulletBlob",
   "tags": [],
   "resourceType": "GMObject",
 }
