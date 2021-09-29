@@ -102,11 +102,7 @@ function clear_wall(grid, _x, _y, front_id, back_id, edge_id, clear_id){
 		tilemap_set(edge_id,0,_x+1,_y);
 		var clear_x = _x * CELL_WIDTH;
 		var clear_y = _y * CELL_HEIGHT;
-		with(instance_create_layer(clear_x-1, clear_y-1, clear_id, objFloorClearOne)){
-			//var rot = choose(0,90,180,270);
-			//image_angle = rot;
-			//image_index = 0;
-		}
+		instance_create_layer(clear_x-1, clear_y-1, clear_id, objFloorClearOne);
 	} 
 }
 

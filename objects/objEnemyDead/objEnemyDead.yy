@@ -1,16 +1,10 @@
 {
-  "spriteId": {
-    "name": "sptDemon_Dead",
-    "path": "sprites/sptDemon_Dead/sptDemon_Dead.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "objEnemyDead",
-    "path": "objects/objEnemyDead/objEnemyDead.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -23,15 +17,17 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [],
+  "eventList": [
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+  ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Enemies",
-    "path": "folders/Objects/Enemies.yy",
+    "name": "Main",
+    "path": "folders/Objects/Main.yy",
   },
   "resourceVersion": "1.0",
-  "name": "objDemonDead",
+  "name": "objEnemyDead",
   "tags": [],
   "resourceType": "GMObject",
 }

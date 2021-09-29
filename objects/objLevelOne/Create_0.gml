@@ -6,6 +6,7 @@ shadow_surface_ = noone;
 var _wall_map_edge_id = layer_tilemap_get_id("WallTilesEdge");
 var _wall_map_front_id = layer_tilemap_get_id("WallTilesFront");
 var _wall_map_back_id = layer_tilemap_get_id("WallTilesBack");
+var _wall_map_clear_id = layer_get_id("FloorClear");
 
 // Set up the grid
 width_ = room_width div CELL_WIDTH;
@@ -40,11 +41,11 @@ repeat (_steps){
 	_controller_y += _y_direction;
 	
 	// Maker sure we don't go outside the grid
-	if(_controller_x < 2 || _controller_x >= width_ - 2){
-		_controller_x += -_x_direction * 2;
+	if(_controller_x < 4 || _controller_x >= width_ - 4){
+		_controller_x += -_x_direction * 4;
 	}
-	if(_controller_y < 2 || _controller_y >= height_ - 2){
-		_controller_y += -_y_direction * 2;
+	if(_controller_y < 4 || _controller_y >= height_ - 4){
+		_controller_y += -_y_direction * 4;
 	}
 }
 
@@ -80,6 +81,7 @@ for(var _n = 1; _n < _t; _n++){
 			var extra_x = grid_x * CELL_WIDTH + CELL_WIDTH/2;
 			var extra_y = grid_y * CELL_WIDTH + CELL_WIDTH/2;
 			instance_create_layer(extra_x, extra_y, "ExtraObjects", objGate1One);
+			knock_out_walls(grid_, grid_x, grid_y);
 		}
 }
 
@@ -92,12 +94,12 @@ for(var _y = 1; _y < height_-1; _y++){
 	}
 }
 
-//Place Todd
-var list_value = get_empty_floor(self);
-var start_x = list_value[0] * CELL_WIDTH + CELL_WIDTH/2;
-var start_y = list_value[1] * CELL_HEIGHT + CELL_HEIGHT/2;
-instance_create_layer(start_x, start_y, "Todd", objTodd);
-knock_out_walls(grid_, list_value[0], list_value[1]);
+////Place Todd
+//var list_value = get_empty_floor(self);
+//var start_x = list_value[0] * CELL_WIDTH + CELL_WIDTH/2;
+//var start_y = list_value[1] * CELL_HEIGHT + CELL_HEIGHT/2;
+//instance_create_layer(start_x, start_y, "Todd", objTodd);
+//knock_out_walls(grid_, list_value[0], list_value[1]);
 
 
 // Placing tiles
@@ -135,16 +137,25 @@ for(var _y = 1; _y < height_-1; _y++){
 	}
 }
 
+//Place Todd
+var list_value = get_empty_floor(self);
+var start_x = list_value[0] * CELL_WIDTH + CELL_WIDTH/2;
+var start_y = list_value[1] * CELL_HEIGHT + CELL_HEIGHT/2;
+instance_create_layer(start_x, start_y, "Todd", objTodd);
+knock_out_walls(grid_, list_value[0], list_value[1]);
+
 
 //Place enemies
 enemy_types = [objHornet, objDemon];
 enemy_counts = [irandom_range(10,10),irandom_range(10,10)];
 enemy_layers = ["EnemiesFlying", "EnemiesGrounded"];
+enemy_knockout = [false, true];
 for(var i = 0; i < array_length(enemy_types); i++){
 	for(var j = 1; j <= enemy_counts[i]; j++){
 		var list_value = get_empty_floor(self);
 		var start_x = list_value[0] * CELL_WIDTH + CELL_WIDTH/2;
 		var start_y = list_value[1] * CELL_HEIGHT + CELL_HEIGHT/2;
 		instance_create_layer(start_x, start_y, enemy_layers[i], enemy_types[i]);
+		if(enemy_knockout[i]) knock_out_walls(grid_, list_value[0], list_value[1]);
 	}
 }
