@@ -29,6 +29,8 @@ max_speed_ = 2;
 acceleration_ = .5;
 recovery_remain = 0;
 flash = 0;
+water = 0;
+footprints = 0;
 
 // Controller vars
 controller = 0;

@@ -26,4 +26,20 @@ if(gunplaceangle > 0 && gunplaceangle <= 180){
 	draw_sprite_ext(gunsprite, 0, x, y, xscale, 1, gunangle, c_white, 1);
 }
 
+if(sprite_index == sptToddWalk && water > 0){
+	draw_sprite_ext(sptToddWaterWalk, image_index, x, y, xscale, 1, 0, c_white, 1);
+	if(footprints < 0){
+		with(instance_create_layer(floor(x), floor(y), "EnemiesUnderground", objWaterFootsteps)){
+			image_angle = other.direction;
+			image_xscale = other.image_xscale;
+		}
+		footprints = 10;
+	}
+	footprints--;
+}
+if(sprite_index == sptToddIdel && water > 0){
+	draw_sprite_ext(sptToddWaterIdle, image_index, x, y, xscale, 1, 0, c_white, 1);
+}
+water--;
+
 shader_reset();

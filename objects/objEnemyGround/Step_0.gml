@@ -53,8 +53,8 @@ if(!dead){
 	}
 	
 	// Check attack radius
-	if collision_circle(x, y, 100, objTodd, false, true) move_weights[2] = 80; else move_weights[2] = 0;
-	if collision_circle(x, y, 100, objTodd, false, true) move_weights[3] = 160; else move_weights[3] = 0;
+	if collision_circle(x, y, 400, objTodd, false, true) move_weights[2] = 80; else move_weights[2] = 0;
+	if collision_circle(x, y, 400, objTodd, false, true) move_weights[3] = 160; else move_weights[3] = 0;
 	
 	spd_array = [0, 0, 0, 0];
 	dir_array = [0, 0, 0, 0];

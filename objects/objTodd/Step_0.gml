@@ -149,7 +149,12 @@ if(hit_now){
 }
 
 x_speed_ -= lengthdir_x(currentrecoil, gunangle);
-x += x_speed_;
+if(place_meeting(x+x_speed_,y,objEnemyUnderground)){
+	x += (x_speed_/2);
+	water = 30;
+}else{
+	x += x_speed_;
+}
 if(x_speed_ > 0){
 	image_xscale = 1;
 	if(grid_place_meeting(self, objLevelOne.grid_)){
@@ -167,7 +172,12 @@ if(x_speed_ > 0){
 }
 
 y_speed_ -= lengthdir_y(currentrecoil, gunangle);
-y += y_speed_;
+if(place_meeting(x,y+y_speed_,objEnemyUnderground)){
+	y += (y_speed_/2);
+	water = 30;
+}else{
+	y += y_speed_;
+}
 if(y_speed_ > 0){
 	if(grid_place_meeting(self, objLevelOne.grid_)){
 		y = bbox_bottom&~(CELL_HEIGHT-1);

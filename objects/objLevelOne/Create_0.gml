@@ -6,7 +6,7 @@ shadow_surface_ = noone;
 var _wall_map_edge_id = layer_tilemap_get_id("WallTilesEdge");
 var _wall_map_front_id = layer_tilemap_get_id("WallTilesFront");
 var _wall_map_back_id = layer_tilemap_get_id("WallTilesBack");
-var _wall_map_clear_id = layer_get_id("FloorClear");
+//var _wall_map_clear_id = layer_get_id("FloorClear");
 
 // Set up the grid
 width_ = room_width div CELL_WIDTH;
@@ -146,15 +146,16 @@ knock_out_walls(grid_, list_value[0], list_value[1]);
 
 
 //Place enemies
-enemy_types = [objHornet, objDemon];
-enemy_counts = [irandom_range(10,10),irandom_range(10,10)];
-enemy_layers = ["EnemiesFlying", "EnemiesGrounded"];
-enemy_knockout = [false, true];
+enemy_types = [objHornet, objDemon, objFetusPod, objWater];
+enemy_counts = [irandom_range(10,10),irandom_range(10,10),irandom_range(10,10),irandom_range(10,10)];
+enemy_layers = ["EnemiesFlying", "EnemiesGrounded", "EnemiesGrounded", "EnemiesUnderground"];
+enemy_offset = [[0,0], [0,0], [0,0], [-(CELL_WIDTH/2),-(CELL_HEIGHT/2)]];
+enemy_knockout = [false, true, false, true];
 for(var i = 0; i < array_length(enemy_types); i++){
 	for(var j = 1; j <= enemy_counts[i]; j++){
 		var list_value = get_empty_floor(self);
-		var start_x = list_value[0] * CELL_WIDTH + CELL_WIDTH/2;
-		var start_y = list_value[1] * CELL_HEIGHT + CELL_HEIGHT/2;
+		var start_x = list_value[0] * CELL_WIDTH + CELL_WIDTH/2 + enemy_offset[i][0];
+		var start_y = list_value[1] * CELL_HEIGHT + CELL_HEIGHT/2 + enemy_offset[i][1];
 		instance_create_layer(start_x, start_y, enemy_layers[i], enemy_types[i]);
 		if(enemy_knockout[i]) knock_out_walls(grid_, list_value[0], list_value[1]);
 	}
