@@ -130,6 +130,13 @@ if((mouse_check_button(mb_left) || gamepad_button_check(0,gp_shoulderrb)) && cur
 			image_angle = direction;
 			ap = other.attackpoints;
 		}
+		var casing = irandom(2);
+		with(instance_create_layer(x, y, "EnemiesUnderground", objBulletCasings)){
+			image_speed = 0;
+			image_index = casing;
+			speed = 2;
+			direction = 90 + (45 * sign(other.image_xscale));
+		}
 		currentrecoil = recoilstart;
 	}else{
 		currentreload = 0;
