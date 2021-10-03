@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 319,
+  "bbox_right": 479,
   "bbox_top": 0,
-  "bbox_bottom": 133,
+  "bbox_bottom": 201,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 320,
-  "height": 134,
+  "width": 480,
+  "height": 202,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,9 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"d8ff1f49-4024-43a9-b3f4-8fe9e6a5a85a","path":"sprites/sptEpicPigLogo/sptEpicPigLogo.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"d8ff1f49-4024-43a9-b3f4-8fe9e6a5a85a","path":"sprites/sptEpicPigLogo/sptEpicPigLogo.yy",},"LayerId":{"name":"97851810-8374-4fd7-81da-a23f8ec965d1","path":"sprites/sptEpicPigLogo/sptEpicPigLogo.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sptEpicPigLogo","path":"sprites/sptEpicPigLogo/sptEpicPigLogo.yy",},"resourceVersion":"1.0","name":"d8ff1f49-4024-43a9-b3f4-8fe9e6a5a85a","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"b279c293-fda5-42a4-ae85-a40712f20c0f","path":"sprites/sptEpicPigLogo/sptEpicPigLogo.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"b279c293-fda5-42a4-ae85-a40712f20c0f","path":"sprites/sptEpicPigLogo/sptEpicPigLogo.yy",},"LayerId":{"name":"494596d2-7c06-46b7-a8e9-09bf5632ac07","path":"sprites/sptEpicPigLogo/sptEpicPigLogo.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sptEpicPigLogo","path":"sprites/sptEpicPigLogo/sptEpicPigLogo.yy",},"resourceVersion":"1.0","name":"b279c293-fda5-42a4-ae85-a40712f20c0f","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"sptEpicPigLogo","path":"sprites/sptEpicPigLogo/sptEpicPigLogo.yy",},
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"20f60675-6c10-4a0e-aa9c-6e90e3c32b3c","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"d8ff1f49-4024-43a9-b3f4-8fe9e6a5a85a","path":"sprites/sptEpicPigLogo/sptEpicPigLogo.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"2f27463c-6a71-4821-b02d-c44d477021fe","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"b279c293-fda5-42a4-ae85-a40712f20c0f","path":"sprites/sptEpicPigLogo/sptEpicPigLogo.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -65,12 +65,12 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"97851810-8374-4fd7-81da-a23f8ec965d1","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"494596d2-7c06-46b7-a8e9-09bf5632ac07","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Logos",
-    "path": "folders/Sprites/Logos.yy",
+    "name": "Intro",
+    "path": "folders/Sprites/Intro.yy",
   },
   "resourceVersion": "1.0",
   "name": "sptEpicPigLogo",

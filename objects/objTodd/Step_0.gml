@@ -130,6 +130,7 @@ if((mouse_check_button(mb_left) || gamepad_button_check(0,gp_shoulderrb)) && cur
 			image_angle = direction;
 			ap = other.attackpoints;
 		}
+		//audio_play_sound(sndRevolver, 15, false);
 		var casing = irandom(2);
 		with(instance_create_layer(x, y, "EnemiesUnderground", objBulletCasings)){
 			image_speed = 0;
@@ -199,3 +200,11 @@ if(y_speed_ > 0){
 	}
 }
 #endregion Check Collisions/Move
+
+//#region Sound Effects
+//if(sprite_index == sptToddWalk){
+//	if(!audio_is_playing(sndToddFootstepsGroundOne)) audio_play_sound(sndToddFootstepsGroundOne, 10, true);
+//}else{
+//	audio_stop_sound(sndToddFootstepsGroundOne);
+//}
+//#endregion Sound Effects

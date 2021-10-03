@@ -24,8 +24,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Logos",
-    "path": "folders/Objects/Logos.yy",
+    "name": "Intro",
+    "path": "folders/Objects/Intro.yy",
   },
   "resourceVersion": "1.0",
   "name": "objEpicPigLogo",
