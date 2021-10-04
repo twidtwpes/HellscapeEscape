@@ -12,6 +12,7 @@
 #macro EAST 4
 #macro SOUTH 8
 
+#macro SAVEFILE "he.sav"
 //global.upperleft = [FLOOR, FLOOR, ANY, FLOOR, VOID, VOID, ANY, VOID, ANY];
 //global.uppermid = [ANY, FLOOR, ANY, VOID, VOID, VOID, ANY, VOID, ANY];
 //global.upperright = [ANY, FLOOR, FLOOR, VOID, VOID, FLOOR, ANY, VOID, ANY];
@@ -23,6 +24,69 @@
 //function grid_tile_check(tile_grid, tile_x, tile_y, tile_array){
 
 //}
+
+function save_settings(savemap){
+	//Delete old save
+	if(file_exists(SAVEFILE)) file_delete(SAVEFILE);
+
+	//Find our savefile string
+	var _save_string = json_encode(savemap);
+
+	//Make a hash (we're using the UTF-8 hash variant here)
+	//SHA1 hash strings are exactly 40 characters long
+	var _hash = sha1_string_utf8(_save_string);
+
+	//Append the hash onto the string
+	_save_string += "#" + _hash + "#";
+
+	//Now save the string to a file
+	var _file = file_text_open_write(SAVEFILE);
+	file_text_write_string(_file, _save_string);
+	file_text_close(_file);
+}
+
+function load_hash(){
+	//Load in the save string
+	var file = file_text_open_read(SAVEFILE);
+	var _save_string = file_text_read_string(file);
+	file_text_close(file);
+
+	//Find the hash tacked onto the end of the save string
+	var _expected_hash = string_copy(_save_string, string_length(_save_string)-40, 40);
+
+	//Trim off the hash
+	//The hash is always exactly 42 characters - 2 for the two hash symbols and 40 for the SHA1 string
+	var _hashless_string = string_copy(_save_string, 1, string_length(_save_string)-42);
+
+	//Make a hash from the new hashless string
+	//NB. We have to use the same hashing function as when we were saving
+	var _new_hash = sha1_string_utf8(_hashless_string);
+
+	//Check if the two hashes match
+	if (_expected_hash == _new_hash)
+	{
+	    //Savefile is valid! Let's load the savedata
+	    var load_map = json_decode(_hashless_string);
+		return load_map;
+	}
+	else
+	{
+	    show_error("Savefile integrity check failed :(", false);
+	}
+}
+
+function update_settings(setting, value){
+	if(setting == "fullscreen") objSettings_Tracker.fullscreen = value;
+	if(setting == "mute") objSettings_Tracker.mute = value;
+	if(setting == "audio_level") objSettings_Tracker.audio_level = value;
+	if(setting == "controls") objSettings_Tracker.controls = value;
+	var settingsmap = ds_map_create();
+	ds_map_add(settingsmap, "fullscreen", objSettings_Tracker.fullscreen);
+	ds_map_add(settingsmap, "mute", objSettings_Tracker.mute);
+	ds_map_add(settingsmap, "audio_level", objSettings_Tracker.audio_level);
+	ds_map_add(settingsmap, "controls", objSettings_Tracker.controls);
+	save_settings(settingsmap);
+}
 
 function wait(stime,secs){
 	var microsecs = secs * 1000000;

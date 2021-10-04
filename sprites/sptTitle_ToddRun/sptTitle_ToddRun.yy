@@ -82,7 +82,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Title",
-    "path": "folders/Sprites/Title.yy",
+    "path": "folders/Sprites/Start/Title.yy",
   },
   "resourceVersion": "1.0",
   "name": "sptTitle_ToddRun",

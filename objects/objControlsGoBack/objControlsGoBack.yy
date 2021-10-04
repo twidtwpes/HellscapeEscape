@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "sptControlsGoBack",
-    "path": "sprites/sptControlsGoBack/sptControlsGoBack.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

@@ -70,7 +70,7 @@
   "nineSlice": null,
   "parent": {
     "name": "Intro",
-    "path": "folders/Sprites/Intro.yy",
+    "path": "folders/Sprites/Start/Intro.yy",
   },
   "resourceVersion": "1.0",
   "name": "sptGameMakerLogo",
