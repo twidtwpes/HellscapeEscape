@@ -125,6 +125,16 @@ function screen_shake(magnitude,frames,leftrumble,rightrunble,rumbleframes){
 	}
 }
 
+function menu_shake(magnitude,frames){
+	with(objMenu_Camera){
+		if(magnitude > shake_remain){
+			shake_magnitude = magnitude;
+			shake_remain = magnitude;
+			shake_length = frames;
+		}
+	}
+}
+
 function get_empty_floor(obj){
 	var list_size = (ds_list_size(obj.floor_list) - 1) div 2;
 	var list_index = (irandom_range(0, list_size)) * 2;

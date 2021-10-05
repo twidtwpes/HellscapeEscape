@@ -59,7 +59,7 @@ if(menu_control){
 			window_set_fullscreen(objSettings_Tracker.fullscreen);
 			menu_control = true;
 			break;
-		case 1: break;
+		case 1: room_goto(rmAudio); break;
 		case 2: room_goto(rmControls); break;
 		case 3: room_goto(rmCredits); break;
 	}
