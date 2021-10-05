@@ -29,10 +29,7 @@ if(menu_control){
 		menu_cursor--;
 		if(menu_cursor < 0) menu_cursor = menu_items - 1;
 	}
-	if(key_enter || gp_enter){
-		select_item();
-		if(gp_enter) screen_shake(2,7,0.2,0.2,10);
-	}
+	if(key_enter || gp_enter) select_item();
 	if(objSettings_Tracker.controls == 0){
 		if(position_meeting(mouse_x, mouse_y, objSettings_FullScreen)){
 			menu_cursor = 0;
@@ -55,9 +52,9 @@ if(menu_control){
 	switch(menu_cursor){
 		case 0: 
 			update_settings("fullscreen", !objSettings_Tracker.fullscreen);
-			set_menu(1, 0, 0, 0, 47);
 			window_set_fullscreen(objSettings_Tracker.fullscreen);
 			menu_control = true;
+			objMenu_Camera.menu_shake();
 			break;
 		case 1: room_goto(rmAudio); break;
 		case 2: room_goto(rmControls); break;
@@ -65,13 +62,49 @@ if(menu_control){
 	}
 }
 
-switch(menu_cursor){
-	case 0: set_menu(1, 0, 0, 0, 47); break;
-	case 1: set_menu(0, 1, 0, 0, 105); break;
-	case 2: set_menu(0, 0, 1, 0, 173); break;
-	case 3: set_menu(0, 0, 0, 1, 241); break;
-}
-
-if((objSettings_Tracker.controls == 0 && ((position_meeting(mouse_x, mouse_y, objSettings_BackKM) && mouse_check_button_pressed(mb_left)) || keyboard_check_pressed(vk_escape))) || (objSettings_Tracker.controls == 1 && gamepad_button_check_pressed(0,gp_face2))){
+if((objSettings_Tracker.controls == 0 && ((position_meeting(mouse_x, mouse_y, objMenu_Back) && mouse_check_button_pressed(mb_left)) || keyboard_check_pressed(vk_escape))) || (objSettings_Tracker.controls == 1 && gamepad_button_check_pressed(0,gp_face2))){
+	objSettings_Tracker.title_menu = 1;
 	room_goto(rmTitle);
 }
+
+switch(menu_cursor){
+	case 0:
+		objSettings_FullScreen.sprite_index = sptSettings_FullScreenHighlight;
+		objSettings_Audio.sprite_index = sptSettings_Audio
+		objSettings_Controls.sprite_index = sptSettings_Controls;
+		objSettings_Credits.sprite_index = sptSettings_Credits;
+		objMenu_Select.y = 68;
+		break;
+	case 1:
+		objSettings_FullScreen.sprite_index = sptSettings_FullScreen;
+		objSettings_Audio.sprite_index = sptSettings_AudioHighlight;
+		objSettings_Controls.sprite_index = sptSettings_Controls;
+		objSettings_Credits.sprite_index = sptSettings_Credits;
+		objMenu_Select.y = 126;
+		break;
+	case 2:
+		objSettings_FullScreen.sprite_index = sptSettings_FullScreen;
+		objSettings_Audio.sprite_index = sptSettings_Audio;
+		objSettings_Controls.sprite_index = sptSettings_ControlsHighlight;
+		objSettings_Credits.sprite_index = sptSettings_Credits;
+		objMenu_Select.y = 194;
+		break;
+	case 3:
+		objSettings_FullScreen.sprite_index = sptSettings_FullScreen;
+		objSettings_Audio.sprite_index = sptSettings_Audio;
+		objSettings_Controls.sprite_index = sptSettings_Controls;
+		objSettings_Credits.sprite_index = sptSettings_CreditsHighlight;
+		objMenu_Select.y = 262;
+		break;
+}
+
+if(objSettings_Tracker.fullscreen){
+	if(menu_cursor == 0) objSettings_Fullscreen_Option.sprite_index = sptSettings_FullScreen_OnHighlight;
+	else objSettings_Fullscreen_Option.sprite_index = sptSettings_FullScreen_On;
+}else{
+	if(menu_cursor == 0) objSettings_Fullscreen_Option.sprite_index = sptSettings_FullScreen_OffHighlight;
+	else objSettings_Fullscreen_Option.sprite_index = sptSettings_FullScreen_Off;
+}
+
+if(objSettings_Tracker.controls == 0) objMenu_Back.sprite_index = sptMenu_BackKM;
+else objMenu_Back.sprite_index = sptMenu_BackGP;

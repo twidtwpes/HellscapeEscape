@@ -8,6 +8,6 @@ escape_speed = 35;
 escape_start = false;
 
 menu_control = true;
-menu_cursor = 0;
+menu_cursor = objSettings_Tracker.title_menu;
 menu_items = 3;
 menu_committed = false;

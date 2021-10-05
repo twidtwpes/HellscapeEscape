@@ -7,10 +7,10 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 9,
-  "bbox_right": 45,
-  "bbox_top": 4,
-  "bbox_bottom": 26,
+  "bbox_left": 3,
+  "bbox_right": 54,
+  "bbox_top": 0,
+  "bbox_bottom": 39,
   "HTile": false,
   "VTile": false,
   "For3D": false,
@@ -24,9 +24,9 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"ad63c306-c971-442f-b562-348172e3af94","path":"sprites/sptControls_Gamepad_OnHighlight/sptControls_Gamepad_OnHighlight.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"ad63c306-c971-442f-b562-348172e3af94","path":"sprites/sptControls_Gamepad_OnHighlight/sptControls_Gamepad_OnHighlight.yy",},"LayerId":{"name":"7d7856b7-2932-4e00-9ca3-6115267be261","path":"sprites/sptControls_Gamepad_OnHighlight/sptControls_Gamepad_OnHighlight.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sptControls_Gamepad_OnHighlight","path":"sprites/sptControls_Gamepad_OnHighlight/sptControls_Gamepad_OnHighlight.yy",},"resourceVersion":"1.0","name":"ad63c306-c971-442f-b562-348172e3af94","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"8cad2b69-8e23-4f7c-af98-31697d2b2129","path":"sprites/sptControls_Gamepad_OnHighlight/sptControls_Gamepad_OnHighlight.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"8cad2b69-8e23-4f7c-af98-31697d2b2129","path":"sprites/sptControls_Gamepad_OnHighlight/sptControls_Gamepad_OnHighlight.yy",},"LayerId":{"name":"c6c0bff6-2e91-43cd-a2cf-3a2bc7a6d01a","path":"sprites/sptControls_Gamepad_OnHighlight/sptControls_Gamepad_OnHighlight.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sptControls_Gamepad_OnHighlight","path":"sprites/sptControls_Gamepad_OnHighlight/sptControls_Gamepad_OnHighlight.yy",},"resourceVersion":"1.0","name":"8cad2b69-8e23-4f7c-af98-31697d2b2129","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"sptControls_Gamepad_OnHighlight","path":"sprites/sptControls_Gamepad_OnHighlight/sptControls_Gamepad_OnHighlight.yy",},
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"ad4e3703-eff8-447a-9f93-b410fe14da78","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"ad63c306-c971-442f-b562-348172e3af94","path":"sprites/sptControls_Gamepad_OnHighlight/sptControls_Gamepad_OnHighlight.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"667ecfbf-cb7b-4f56-b94a-4295973efd39","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"8cad2b69-8e23-4f7c-af98-31697d2b2129","path":"sprites/sptControls_Gamepad_OnHighlight/sptControls_Gamepad_OnHighlight.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -65,7 +65,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"7d7856b7-2932-4e00-9ca3-6115267be261","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"c6c0bff6-2e91-43cd-a2cf-3a2bc7a6d01a","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {

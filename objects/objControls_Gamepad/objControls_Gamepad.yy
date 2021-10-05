@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sptControls_Gamepad",
-    "path": "sprites/sptControls_Gamepad/sptControls_Gamepad.yy",
+    "name": "sptControls_GamepadHighlight",
+    "path": "sprites/sptControls_GamepadHighlight/sptControls_GamepadHighlight.yy",
   },
   "solid": false,
   "visible": true,
