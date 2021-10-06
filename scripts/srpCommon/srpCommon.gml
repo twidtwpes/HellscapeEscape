@@ -76,6 +76,7 @@ function load_hash(){
 }
 
 function update_settings(setting, value){
+	instance_create_layer(5, 280, "Loading", objLoading);
 	if(setting == "fullscreen") objSettings_Tracker.fullscreen = value;
 	if(setting == "mute") objSettings_Tracker.mute = value;
 	if(setting == "audio_level") objSettings_Tracker.audio_level = value;
@@ -86,6 +87,7 @@ function update_settings(setting, value){
 	ds_map_add(settingsmap, "audio_level", objSettings_Tracker.audio_level);
 	ds_map_add(settingsmap, "controls", objSettings_Tracker.controls);
 	save_settings(settingsmap);
+	objLoading.stop = true;
 }
 
 function wait(stime,secs){
