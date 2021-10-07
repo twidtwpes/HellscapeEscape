@@ -49,7 +49,7 @@ if(menu_control){
 	}
 }else{
 	switch(menu_cursor){
-		case 0: room_goto(rmStageIntro); break;
+		case 0: room_goto(rmLockers); break;
 		case 1: room_goto(rmSettings); break;
 		case 2: game_end(); break;
 	}
