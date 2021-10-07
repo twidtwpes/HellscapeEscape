@@ -7,42 +7,36 @@ if(hp <= 0){
 #endregion Check Death
 
 #region Get Player Input
+var key_left = false;
+var key_right = false;
+var key_up = false;
+var key_down = false;
+var key_enter = false;
+	
 if(hascontrol){
-	//check keyboard first
-	var key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
-	var key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
-	var key_up = keyboard_check(vk_up) || keyboard_check(ord("W"));
-	var key_down = keyboard_check(vk_down) || keyboard_check(ord("S"));
-	if(key_left || key_right || key_up || key_down) controller = 0;
-
-	//overwrite with dpad
-	if(gamepad_button_check(0,gp_padl)){
-		key_left = 1;
-		controller = 1;
+	if(objSettings_Tracker.controls == 0){
+		key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
+		key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
+		key_up = keyboard_check(vk_up) || keyboard_check(ord("W"));
+		key_down = keyboard_check(vk_down) || keyboard_check(ord("S"));
+		key_enter = keyboard_check_pressed(vk_enter);
+	}else{
+		key_left = gamepad_button_check_pressed(0,gp_padl);
+		key_right = gamepad_button_check_pressed(0,gp_padr);
+		key_up = gamepad_button_check_pressed(0,gp_padu);
+		key_down = gamepad_button_check_pressed(0,gp_padd);
+		key_enter = gamepad_button_check_pressed(0,gp_face1);
 	}
-	if(gamepad_button_check(0,gp_padr)){
-		key_right = 1;
-		controller = 1;
-	}
-	if(gamepad_button_check(0,gp_padu)){
-		key_up = 1;
-		controller = 1;
-	}
-	if(gamepad_button_check(0,gp_padd)){
-		key_down = 1;
-		controller = 1;
-	}
-
-	//overwrite with left analog
-	if(abs(gamepad_axis_value(0,gp_axislh)) > 0.2){
-		key_left = abs(min(gamepad_axis_value(0,gp_axislh),0));
-		key_right = max(gamepad_axis_value(0,gp_axislh),0);
-		controller = 1;
-	}
-	if(abs(gamepad_axis_value(0,gp_axislv)) > 0.2){
-		key_up = abs(min(gamepad_axis_value(0,gp_axislv),0));
-		key_down = max(gamepad_axis_value(0,gp_axislv),0);
-		controller = 1;
+	
+	if(objSettings_Tracker.controls == 1){
+		if(abs(gamepad_axis_value(0,gp_axislh)) > 0.2){
+			key_left = abs(min(gamepad_axis_value(0,gp_axislh),0));
+			key_right = max(gamepad_axis_value(0,gp_axislh),0);
+		}
+		if(abs(gamepad_axis_value(0,gp_axislv)) > 0.2){
+			key_up = abs(min(gamepad_axis_value(0,gp_axislv),0));
+			key_down = max(gamepad_axis_value(0,gp_axislv),0);
+		}
 	}
 
 	var _x_input = key_right - key_left;
@@ -93,7 +87,7 @@ attackpoints = guns[REVOLVER, ATTACKPOINTS];
 #endregion Set Gun
 
 #region Update Gun
-if(controller == 0){
+if(objSettings_Tracker.controls == 0){
 	gunangle = point_direction(x,y,mouse_x,mouse_y);
 }else{
 	var controllerh = gamepad_axis_value(0,gp_axisrh);
@@ -118,7 +112,12 @@ if(!mouse_check_button(mb_left) && !gamepad_button_check(0,gp_shoulderrb)){
 	firing = false;
 	currentshot = -1;
 }
-if((mouse_check_button(mb_left) || gamepad_button_check(0,gp_shoulderrb)) && currentreload > reloadtime){
+if(objSettings_Tracker.controls == 0){
+	var fire = mouse_check_button(mb_left);
+}else{
+	var fire = gamepad_button_check(0,gp_shoulderrb);
+}
+if(fire && currentreload > reloadtime){
 	firing = true;
 	if(currentshot == -1) currentshot = 0;
 	if(currentshot > -1) currentshot++;
@@ -200,11 +199,3 @@ if(y_speed_ > 0){
 	}
 }
 #endregion Check Collisions/Move
-
-//#region Sound Effects
-//if(sprite_index == sptToddWalk){
-//	if(!audio_is_playing(sndToddFootstepsGroundOne)) audio_play_sound(sndToddFootstepsGroundOne, 10, true);
-//}else{
-//	audio_stop_sound(sndToddFootstepsGroundOne);
-//}
-//#endregion Sound Effects
