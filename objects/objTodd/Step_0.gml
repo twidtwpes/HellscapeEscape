@@ -1,4 +1,5 @@
-
+if(!hascontrol) exit;
+	
 #region Check Death
 recovery_remain--;
 if(hp <= 0){
@@ -13,41 +14,37 @@ var key_up = false;
 var key_down = false;
 var key_enter = false;
 	
-if(hascontrol){
-	if(objSettings_Tracker.controls == 0){
-		key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
-		key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
-		key_up = keyboard_check(vk_up) || keyboard_check(ord("W"));
-		key_down = keyboard_check(vk_down) || keyboard_check(ord("S"));
-		key_enter = keyboard_check_pressed(vk_enter);
-	}else{
-		key_left = gamepad_button_check_pressed(0,gp_padl);
-		key_right = gamepad_button_check_pressed(0,gp_padr);
-		key_up = gamepad_button_check_pressed(0,gp_padu);
-		key_down = gamepad_button_check_pressed(0,gp_padd);
-		key_enter = gamepad_button_check_pressed(0,gp_face1);
-	}
-	
-	if(objSettings_Tracker.controls == 1){
-		if(abs(gamepad_axis_value(0,gp_axislh)) > 0.2){
-			key_left = abs(min(gamepad_axis_value(0,gp_axislh),0));
-			key_right = max(gamepad_axis_value(0,gp_axislh),0);
-		}
-		if(abs(gamepad_axis_value(0,gp_axislv)) > 0.2){
-			key_up = abs(min(gamepad_axis_value(0,gp_axislv),0));
-			key_down = max(gamepad_axis_value(0,gp_axislv),0);
-		}
-	}
 
-	var _x_input = key_right - key_left;
-	var _y_input = key_down - key_up;
-	
-	x_speed_ += _x_input * acceleration_;
-	y_speed_ += _y_input * acceleration_;
+if(objSettings_Tracker.settings[? "controls"] == 0){
+	key_left = keyboard_check(vk_left) || keyboard_check(ord("A"));
+	key_right = keyboard_check(vk_right) || keyboard_check(ord("D"));
+	key_up = keyboard_check(vk_up) || keyboard_check(ord("W"));
+	key_down = keyboard_check(vk_down) || keyboard_check(ord("S"));
+	key_enter = keyboard_check_pressed(vk_enter);
 }else{
-	x_speed_ = 0;
-	y_speed_ = 0;
+	key_left = gamepad_button_check_pressed(0,gp_padl);
+	key_right = gamepad_button_check_pressed(0,gp_padr);
+	key_up = gamepad_button_check_pressed(0,gp_padu);
+	key_down = gamepad_button_check_pressed(0,gp_padd);
+	key_enter = gamepad_button_check_pressed(0,gp_face1);
 }
+	
+if(objSettings_Tracker.settings[? "controls"] == 1){
+	if(abs(gamepad_axis_value(0,gp_axislh)) > 0.2){
+		key_left = abs(min(gamepad_axis_value(0,gp_axislh),0));
+		key_right = max(gamepad_axis_value(0,gp_axislh),0);
+	}
+	if(abs(gamepad_axis_value(0,gp_axislv)) > 0.2){
+		key_up = abs(min(gamepad_axis_value(0,gp_axislv),0));
+		key_down = max(gamepad_axis_value(0,gp_axislv),0);
+	}
+}
+
+var _x_input = key_right - key_left;
+var _y_input = key_down - key_up;
+	
+x_speed_ += _x_input * acceleration_;
+y_speed_ += _y_input * acceleration_;
 #endregion Get Player Input
 
 #region Calculate Movement
@@ -87,7 +84,7 @@ attackpoints = guns[REVOLVER, ATTACKPOINTS];
 #endregion Set Gun
 
 #region Update Gun
-if(objSettings_Tracker.controls == 0){
+if(objSettings_Tracker.settings[? "controls"] == 0){
 	gunangle = point_direction(x,y,mouse_x,mouse_y);
 }else{
 	var controllerh = gamepad_axis_value(0,gp_axisrh);
@@ -112,7 +109,7 @@ if(!mouse_check_button(mb_left) && !gamepad_button_check(0,gp_shoulderrb)){
 	firing = false;
 	currentshot = -1;
 }
-if(objSettings_Tracker.controls == 0){
+if(objSettings_Tracker.settings[? "controls"] == 0){
 	var fire = mouse_check_button(mb_left);
 }else{
 	var fire = gamepad_button_check(0,gp_shoulderrb);

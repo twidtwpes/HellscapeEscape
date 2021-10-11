@@ -14,7 +14,7 @@ var gp_left = false;
 var gp_right = false;
 var gp_enter = false;
 	
-if(objSettings_Tracker.controls == 0){
+if(objSettings_Tracker.settings[? "controls"] == 0){
 	key_down = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"));
 	key_up = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"));
 	key_left = keyboard_check_pressed(vk_left) || keyboard_check_pressed(ord("A"));
@@ -38,7 +38,7 @@ if(menu_control){
 		if(menu_cursor < 0) menu_cursor = menu_items - 1;
 	}
 	if(key_enter || gp_enter) select_item();
-	if(objSettings_Tracker.controls == 0){
+	if(objSettings_Tracker.settings[? "controls"] == 0){
 		if(position_meeting(mouse_x, mouse_y, objAudio_Mute)){
 			menu_cursor = 0;
 			if(mouse_check_button_pressed(mb_left)) select_item();
@@ -51,8 +51,9 @@ if(menu_control){
 }else{
 	switch(menu_cursor){
 		case 0: 
-			update_settings("mute", !objSettings_Tracker.mute);
-			if(objSettings_Tracker.mute) audio_master_gain(0); else audio_master_gain((objSettings_Tracker.audio_level/10));
+			objSettings_Tracker.settings[? "mute"] = !objSettings_Tracker.settings[? "mute"];
+			update_save();
+			if(objSettings_Tracker.settings[? "mute"]) audio_master_gain(0); else audio_master_gain(objSettings_Tracker.settings[? "audio_level"]/10);
 			menu_control = true;
 			objMenu_Camera.menu_shake();
 			break;
@@ -63,17 +64,17 @@ if(menu_control){
 }
 
 if(menu_cursor == 1){
-	var level = objSettings_Tracker.audio_level;
+	var level = objSettings_Tracker.settings[? "audio_level"];
 	if(key_left || gp_left){
 		level--;
 	}
 	if(key_right || gp_right){
 		level++;
 	}
-	objSettings_Tracker.audio_level = clamp(level, 0, 10);
-	objAudio_Volume_Thumb.x = 261 + (15 * objSettings_Tracker.audio_level);
-	update_settings("audio_level", objSettings_Tracker.audio_level);
-	if(objSettings_Tracker.mute) audio_master_gain(0); else audio_master_gain((objSettings_Tracker.audio_level/10));
+	objSettings_Tracker.settings[? "audio_level"] = clamp(level, 0, 10);
+	update_save();
+	objAudio_Volume_Thumb.x = 261 + (15 * objSettings_Tracker.settings[? "audio_level"]);
+	if(objSettings_Tracker.settings[? "mute"]) audio_master_gain(0); else audio_master_gain((objSettings_Tracker.settings[? "audio_level"]/10));
 }
 
 switch(menu_cursor){
@@ -81,7 +82,7 @@ switch(menu_cursor){
 		objMenu_Select.y = 69;
 		objAudio_Mute.sprite_index = sptAudio_MuteHighlight;
 		objAudio_Volume.sprite_index = sptAudio_Volume;
-		if(objSettings_Tracker.mute) objAudio_Mute_Options.sprite_index = sptAudio_Mute_OnHighlight;
+		if(objSettings_Tracker.settings[? "mute"]) objAudio_Mute_Options.sprite_index = sptAudio_Mute_OnHighlight;
 		else objAudio_Mute_Options.sprite_index = sptAudio_Mute_OffHighlight;
 		break;
 	}
@@ -89,13 +90,13 @@ switch(menu_cursor){
 		objMenu_Select.y = 141;
 		objAudio_Mute.sprite_index = sptAudio_Mute;
 		objAudio_Volume.sprite_index = sptAudio_VolumeHighlight;
-		if(objSettings_Tracker.mute) objAudio_Mute_Options.sprite_index = sptAudio_Mute_On;
+		if(objSettings_Tracker.settings[? "mute"]) objAudio_Mute_Options.sprite_index = sptAudio_Mute_On;
 		else objAudio_Mute_Options.sprite_index = sptAudio_Mute_Off;
 		break;
 	}
 }
 
-switch(objSettings_Tracker.audio_level){
+switch(objSettings_Tracker.settings[? "audio_level"]){
 	case 0: objAudio_Volume_Options.sprite_index = sptAudio_Volume_Value0; break;
 	case 1: objAudio_Volume_Options.sprite_index = sptAudio_Volume_Value1; break;
 	case 2: objAudio_Volume_Options.sprite_index = sptAudio_Volume_Value2; break;
@@ -109,9 +110,9 @@ switch(objSettings_Tracker.audio_level){
 	case 10: objAudio_Volume_Options.sprite_index = sptAudio_Volume_Value10; break;
 }
 
-if((objSettings_Tracker.controls == 0 && ((position_meeting(mouse_x, mouse_y, objMenu_Back) && mouse_check_button_pressed(mb_left)) || keyboard_check_pressed(vk_escape))) || (objSettings_Tracker.controls == 1 && gamepad_button_check_pressed(0,gp_face2))){
+if((objSettings_Tracker.settings[? "controls"] == 0 && ((position_meeting(mouse_x, mouse_y, objMenu_Back) && mouse_check_button_pressed(mb_left)) || keyboard_check_pressed(vk_escape))) || (objSettings_Tracker.settings[? "controls"] == 1 && gamepad_button_check_pressed(0,gp_face2))){
 	room_goto(rmSettings);
 }
 
-if(objSettings_Tracker.controls == 0) objMenu_Back.sprite_index = sptMenu_BackKM;
+if(objSettings_Tracker.settings[? "controls"] == 0) objMenu_Back.sprite_index = sptMenu_BackKM;
 else objMenu_Back.sprite_index = sptMenu_BackGP;

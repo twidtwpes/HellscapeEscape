@@ -1,5 +1,45 @@
 randomize();
 
+objSettings_Tracker.level_load = rmLevelOne;
+
+pause = false;
+spt_screenshot = noone;
+pause_select = 0;
+confirm = false;
+confirm_option = 0;
+screenshot_scale = 1;
+
+continue_x = 42;
+continue_y = 184
+continue_w = sprite_get_width(sptPause_Continue);
+continue_h = sprite_get_height(sptPause_Continue);
+retry_x = 74;
+retry_y = 248
+retry_w = sprite_get_width(sptPause_Retry);
+retry_h = sprite_get_height(sptPause_Retry);
+settings_x = 278;
+settings_y = 184
+settings_w = sprite_get_width(sptPause_Settings);
+settings_h = sprite_get_height(sptPause_Settings);
+quit_x = 310;
+quit_y = 248
+quit_w = sprite_get_width(sptPause_Quit);
+quit_h = sprite_get_height(sptPause_Quit);
+no_x = 102;
+no_y = 184;
+no_w = sprite_get_width(sptMenu_No);
+no_h = sprite_get_height(sptMenu_No);
+yes_x = 298;
+yes_y = 184;
+yes_w = sprite_get_width(sptMenu_Yes);
+yes_h = sprite_get_height(sptMenu_Yes);
+
+
+menu_fg_start = 1.4;
+menu_fg_end = 1;
+menu_fg_current = menu_fg_start;
+menu_fg_amount = 0.05;
+
 shadow_surface_ = noone;
 
 // Get the tile layer map id
@@ -73,14 +113,14 @@ for(var _n = 1; _n < 400; _n++){
 }
 
 //Place extra objects
-var _t = irandom_range(1,5);
+var _t = irandom_range(5,10);
 for(var _n = 1; _n < _t; _n++){
 		var grid_x = irandom_range(1, width_-1);
 		var grid_y = irandom_range(1, height_-1);
 		if(grid_[# grid_x, grid_y] == FLOOR){
 			var extra_x = grid_x * CELL_WIDTH + CELL_WIDTH/2;
 			var extra_y = grid_y * CELL_WIDTH + CELL_WIDTH/2;
-			instance_create_layer(extra_x, extra_y, "ExtraObjects", objGate1One);
+			instance_create_layer(extra_x, extra_y, "ExtraObjects", objGate2One);
 			knock_out_walls(grid_, grid_x, grid_y);
 		}
 }
@@ -158,5 +198,17 @@ for(var i = 0; i < array_length(enemy_types); i++){
 		var start_y = list_value[1] * CELL_HEIGHT + CELL_HEIGHT/2 + enemy_offset[i][1];
 		instance_create_layer(start_x, start_y, enemy_layers[i], enemy_types[i]);
 		if(enemy_knockout[i]) knock_out_walls(grid_, list_value[0], list_value[1]);
+	}
+}
+
+//Place pickups
+pickup_types = [objWeapons_Box, objSpecial_Box, objUltra_Box];
+pickup_counts = [irandom_range(10,10),irandom_range(10,10),irandom_range(10,10)];
+for(var i = 0; i < array_length(pickup_types); i++){
+	for(var j = 1; j <= pickup_counts[i]; j++){
+		var list_value = get_empty_floor(self);
+		var start_x = list_value[0] * CELL_WIDTH + CELL_WIDTH/2 -(CELL_WIDTH/2);
+		var start_y = list_value[1] * CELL_HEIGHT + CELL_HEIGHT/2 -(CELL_HEIGHT/2);
+		instance_create_layer(start_x, start_y, "Pickups", pickup_types[i]);
 	}
 }

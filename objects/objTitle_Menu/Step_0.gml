@@ -10,7 +10,7 @@ var gp_right = false;
 var gp_left = false;
 var gp_enter = false;
 	
-if(objSettings_Tracker.controls == 0){
+if(objSettings_Tracker.settings[? "controls"] == 0){
 	key_right = keyboard_check_pressed(vk_right) || keyboard_check_pressed(ord("D"));
 	key_left = keyboard_check_pressed(vk_left) || keyboard_check_pressed(ord("A"));
 	key_enter = keyboard_check_pressed(vk_enter);
@@ -33,7 +33,7 @@ if(menu_control){
 		select_item();
 		if(gp_enter) screen_shake(2,7,0.2,0.2,10);
 	}
-	if(objSettings_Tracker.controls == 0){
+	if(objSettings_Tracker.settings[? "controls"] == 0){
 		if(position_meeting(mouse_x, mouse_y, objTitle_Start)){
 			menu_cursor = 0;
 			if(mouse_check_button_pressed(mb_left)) select_item();

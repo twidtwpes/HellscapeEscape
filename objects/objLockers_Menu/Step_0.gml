@@ -14,7 +14,7 @@ var gp_down = false;
 var gp_up = false;
 var gp_enter = false;
 	
-if(objSettings_Tracker.controls == 0){
+if(objSettings_Tracker.settings[? "controls"] == 0){
 	key_down = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"));
 	key_up = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"));
 	key_enter = keyboard_check_pressed(vk_enter);
@@ -36,10 +36,10 @@ if(menu_control){
 	if(key_enter || gp_enter) select_item();
 }else{
 	switch(menu_cursor){
-		case 0: menu_control = true; break;
+		case 0:room_goto(rmStageIntro); break;
 		case 1: menu_control = true; break;
 		case 2: menu_control = true; break;
-		case 3: room_goto(rmStageIntro); break;
+		case 3: menu_control = true; break;
 	}
 }
 

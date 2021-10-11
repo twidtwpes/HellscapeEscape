@@ -1,39 +1,18 @@
 title_menu = 0;
-
-fullscreen = false;
-mute = true;
-audio_level = 9;
-controls = 0;
+pause = false;
+level_load = noone
 
 level = 1;
 stage = 1;
 kills = 0;
 
-lifetime_kills = 0;
-lifetime_hours = 0;
-session_kills = 0;
-session_hours = 0;
-furthest_complete = 0;
-session_complete = 0;
-weapons_received = [];
-specials_received = [];
-ultras_received = [];
-weapon_default = [];
-specials_default = [];
-ultras_default = [];
-weapon_pellets = 0;
-special_pellets = 0;
-ultra_pellets = 0;
-weapon_lockers_available = [];
-special_lockers_available = [];
-ultra_lockers_available = [];
-
-
-title_menu = 0;
-
-level = 1;
-stage = 1;
-kills = 0;
+bullets_ammo = 0;
+shells_ammo = 0;
+energy_ammo = 0;
+bolts_ammo = 0;
+fuel_ammo = 0;
+rocks_ammo = 0;
+bombs_ammo = 0;
 
 settings = ds_map_create();
 ds_map_add(settings, "fullscreen", false);
@@ -60,4 +39,3 @@ ds_map_add(stats, "ultra_pellets", 0);
 ds_map_add(stats, "weapon_lockers_available", []);
 ds_map_add(stats, "special_lockers_available", []);
 ds_map_add(stats, "ultra_lockers_available", []);
-

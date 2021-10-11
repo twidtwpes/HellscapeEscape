@@ -10,7 +10,7 @@ var gp_down = false;
 var gp_up = false;
 var gp_enter = false;
 	
-if(objSettings_Tracker.controls == 0){
+if(objSettings_Tracker.settings[? "controls"] == 0){
 	key_down = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"));
 	key_up = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"));
 	key_enter = keyboard_check_pressed(vk_enter);
@@ -30,7 +30,7 @@ if(menu_control){
 		if(menu_cursor < 0) menu_cursor = menu_items - 1;
 	}
 	if(key_enter || gp_enter) select_item();
-	if(objSettings_Tracker.controls == 0){
+	if(objSettings_Tracker.settings[? "controls"] == 0){
 		if(position_meeting(mouse_x, mouse_y, objSettings_FullScreen)){
 			menu_cursor = 0;
 			if(mouse_check_button_pressed(mb_left)) select_item();
@@ -51,8 +51,9 @@ if(menu_control){
 }else{
 	switch(menu_cursor){
 		case 0: 
-			update_settings("fullscreen", !objSettings_Tracker.fullscreen);
-			window_set_fullscreen(objSettings_Tracker.fullscreen);
+			objSettings_Tracker.settings[? "fullscreen"] = !objSettings_Tracker.settings[? "fullscreen"];
+			update_save();
+			window_set_fullscreen(objSettings_Tracker.settings[? "fullscreen"]);
 			menu_control = true;
 			objMenu_Camera.menu_shake();
 			break;
@@ -62,9 +63,13 @@ if(menu_control){
 	}
 }
 
-if((objSettings_Tracker.controls == 0 && ((position_meeting(mouse_x, mouse_y, objMenu_Back) && mouse_check_button_pressed(mb_left)) || keyboard_check_pressed(vk_escape))) || (objSettings_Tracker.controls == 1 && gamepad_button_check_pressed(0,gp_face2))){
-	objSettings_Tracker.title_menu = 1;
-	room_goto(rmTitle);
+if((objSettings_Tracker.settings[? "controls"] == 0 && ((position_meeting(mouse_x, mouse_y, objMenu_Back) && mouse_check_button_pressed(mb_left)) || keyboard_check_pressed(vk_escape))) || (objSettings_Tracker.settings[? "controls"] == 1 && gamepad_button_check_pressed(0,gp_face2))){
+	if(objSettings_Tracker.pause){
+		room_goto(objSettings_Tracker.level_load);
+	}else{
+		objSettings_Tracker.title_menu = 1;
+		room_goto(rmTitle2);
+	}
 }
 
 switch(menu_cursor){
@@ -98,7 +103,7 @@ switch(menu_cursor){
 		break;
 }
 
-if(objSettings_Tracker.fullscreen){
+if(objSettings_Tracker.settings[? "fullscreen"]){
 	if(menu_cursor == 0) objSettings_Fullscreen_Option.sprite_index = sptSettings_FullScreen_OnHighlight;
 	else objSettings_Fullscreen_Option.sprite_index = sptSettings_FullScreen_On;
 }else{
@@ -106,5 +111,5 @@ if(objSettings_Tracker.fullscreen){
 	else objSettings_Fullscreen_Option.sprite_index = sptSettings_FullScreen_Off;
 }
 
-if(objSettings_Tracker.controls == 0) objMenu_Back.sprite_index = sptMenu_BackKM;
+if(objSettings_Tracker.settings[? "controls"] == 0) objMenu_Back.sprite_index = sptMenu_BackKM;
 else objMenu_Back.sprite_index = sptMenu_BackGP;
